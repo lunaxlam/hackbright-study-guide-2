@@ -1,0 +1,326 @@
+PART 1: Dictionaries
+---
+
+Q: Why are dictionaries necessary? Why not use a list?
+A: Dictionaries are mapping type of collection data structure. 
+If you need to quickly look up the value of a key, dictionaries are much more efficient compared to lists since you do not need to iterate each list element to complete the search when using a dictionary.
+
+
+Q: How is the lookup time in a dictionary different from that of a list?
+A: When you look-up an item in a list, you have to look at each item one-at-a-time.
+This can be extremely time-efficient, especially in the case of an unordered list.
+Dictionaries, on the other hand, do not rely on order and allow us to access a value based on the key of the item that we are looking-up. 
+
+Q: How do you create an empty dictionary? How do you create a dictionary with initial content?
+A: To create an empty dictionary, initialize a set of curly braces like so: dictionary = {}. 
+If you have initial content, then you can initialize the dictionary like so: dictionary = {key0: value 0, key1: value1, key2: value2, ...}
+
+Q: How do you add a new key/value pair to a dictionary? How do you update the value of a key in a dictionary?
+A: To add/update the value of a key/value pair in a dictionary, use: dictionary[key] = value
+
+Q: How do you remove a key/value pair from a dictionary?
+A: You can use the "del" keyword on the key, i.e.: del dictionary[key]
+
+Q: How do you look up the value for a given key in a dictionary?
+A: To look-up a given key, use this syntax: dictionary[key]. 
+To look-up all values in a dictionary, use this syntax: dictionary.values()
+
+Q: How do you iterate over a dictionary?
+A: Use a for-loop like so:
+
+    for key in dictionary:
+        value = key[value]
+    
+    or
+
+    for key, value in dictionary.items():
+        print(key: value)
+
+Q: Print keys?
+A: Use: print(dictionary.keys())
+
+Q: Print values?
+A: Use: print(dictionary.values())
+
+Q: Print keys and values?
+A: Use: print(dictionary.items()) 
+
+Q: What is a KeyError? When does one occur?
+A: A KeyError occurs when you try to look-up or access a key in a dictionary when it does not currently exist. 
+We can handle a KeyError by passing a default valuein the .get() method:
+
+    animals.get("porcupine", 0)         # This will return "0" if "porcupine" is not a key in the dictionary.
+                                        If "porcupine" is a key, then the value will return.
+
+    or
+
+    animals.get("porcupine") is None    # This will return "True" if "porcupine" is not a key in the dictionary
+
+Q: Dictionary methods to know:
+
+    - .get(): Accepts a "key" as the argument and, optionally, accepts a default-value if the key is not found; designed to return the "value" associated with the key.
+
+    - .values(): Returns all values in the dictionary.
+
+    - .items(): Return all key, value pairs in the dictionary.
+
+Q: How do you access a dictionary within a dictionary?
+A: You can index into the nested dictionary.
+
+Q: When should you use a dictionary?
+A: When you need to store a data collection consisting of non-duplicate key, value-pair types and require a quick look-up time. 
+
+
+PART 2: Python Tools
+---
+
+Q: What are some characteristics of Python as compared to other programming languages?
+A: Python characteristics:
+
+    - High-level programming language:
+
+        High-level programming languages (i.e. Python, C++, Java, JavaScript, & PHP) tend to be easier to read, quicker to write, and shorter compared to low-level languages (i.e. machine code, assembly language).
+        Low-level programming languages requires the engineer to handle memory management and are useful for devices needing efficient power-consumption. 
+        Low-level programming languages encode instructions in binary so the computer can execute the program. 
+
+    - Strongly-typed:
+
+        Strongly-typed programming languages predefine each type of data that can be used within a program, and any constants or variables defined within the program must follow the data type rules. 
+        Any errors violating these syntax rules are caught at compile time and so require stricter typing rules. 
+        Note: Strongly-typed languages actually have values or identifers, not variables. 
+
+    - An "interpreted" language (but also compiled): 
+
+        Interpreted languages read a high-level program (source code) and execute it by processing each line at a time. Each line is compiled into byte code. 
+        Compiled languages, on the other hand, read the entire source code and convert it into a separate executable program that can be run. 
+
+Q: What are .pyc files? What is their purpose?
+A: A .pyc file is the compiled version of the the program. If the .pyc file has not changed at runtime, then the same .pyc file is used.
+   Otherwise, the .pyc file is recompiled via "just-in-time"/line-by-line compilation. 
+
+Q: What’s the difference between the commands python3 mygame.py and python3 -i mygame.py?
+Q: The -i flag allows us to run the program interactively in the terminal console.  
+
+Q: Built-in Python functions to know:
+
+    - dir(): Returns a list of valid attributes and methods of the object passed as the argument.
+
+    - help(): Returns the documentation of modules, functions, classes, keywords, etc. associated with the object passed as the argument.
+ 
+Q: Why does code style matter?
+A: Following code style conventions is important for readability and reduces bugs in our programs.
+
+Q: Key points of Python style to know
+A: 
+    - Indentation should consist of 4 spaces
+    - Use a max of 79 chars per line
+    - Line breaks are okay to use inside a pair of braces, brackets, or parenthesis
+    - Using whitespace to breakup your code improves readability
+    - Use 2 blank lines between functions
+    - Variable and function names should be in lower-case snake-case:
+
+        - Variable names should describe the item and not what it is (i.e. fruits_for_sale is a better name than my_list)
+        - Function names should be "verby"
+        - Collection-type variables should use plural nouns
+        - Non-collection type variables should use singular nouns
+    
+    - Constant variables should be declared in ALL_UPPER_CASE
+    - Function Docstrings use triple-quotes and the summary should always be only one line and use imperative langauge. 
+    - In Docstrings, it is useful to include examples of what the code sould do. 
+ 
+Q: What is sys.argv? What happens if you print it out?
+A: sys.argv is a list of command line arguments from the sys module. It includes everything after "python3" when running a program.
+
+
+PART 3: Markov Chains
+---
+Markov Chains are models of predictability that help us forecast the transition probability between two states: a current state and previous state. 
+The transition probability of the current state (t) is predicated on the directly-previous state (t-1). 
+Any states preceding "t-1" does not matter. 
+
+Typically, Markov Chains include vector arrows between various states to illustrate ethe transition probability by percentage. 
+All transition probabilities that are - moving away - from any given state must accumulate to 1.0. 
+
+In summary, Markov Chains are fantastic to create "procedurally-generated data", which means to "create data in an alogrithmic way". 
+---
+
+Q: In the context of Markov chains, what is a bigram? What’s an n-gram?
+A: A bigram is a two-word sequence that allows us construct new text by understanding the links between words.
+In a bigram, we use the two-word sequence and examine the words immediately following the two-word sequence.
+An n-gram functions the same way but gives the programmer the ability to define how many words the n-gram should consist of. 
+
+Q: How could you use dictionaries to structure a bigram markov chain implementation?
+A: We can store the bigram or n-gram sequence as a tuple-type key in a dictionary and then set the value to any word immediately following the bigram/n-gram sequence.
+This allows us to detect patterns and probabilities of transition between the bigram/n-gram key and corresponding values. 
+
+
+Part 4: Shell
+---
+
+Q: VS Code shortcuts to know and use:
+
+    - CTRL-/ to comment/uncomment
+
+    - CTRL-] and CTRL-[ to indent/dedent (or tab and shift + tab)
+
+    - Shell shortcuts and commands to know and use:
+
+    - Tab completion
+
+    - Up arrow/Down arrow to navigate history
+
+    - CTRL-A to go to beginning of line
+
+    - CTRL-E to go to end of line
+ 
+    - CTRL-D to delete moving forward
+
+    - head <some file name>
+
+    - cat <some file name>
+
+    - tail <some file name>
+
+    - wc <some file name>
+
+    - sort <some file name>
+
+    - grep <term> <some file name>
+
+    - Using * to file name glob
+
+    - env
+
+    - echo $PATH
+
+    - which python
+ 
+    - export SOME_VARIABLE='some value'
+ 
+Q: What is STDIN? How do you capture it using Python?
+A:
+
+Q: What is STDOUT? How do you push to it using Python?
+A:
+
+Q: What is STDERR?
+A:
+
+Q: How do you redirect the output of one shell command to a file?
+A:
+
+Q: How do you redirect the output of one shell command and append it to a file?
+A:
+
+Q: How do you redirect the content of a file as input to an interactive Python script?
+A:
+
+Q: How do you redirect the output of one shell command to the input of another?
+A:
+
+Q: What is the shell environment?
+A:
+
+Q: What is the $PATH environment variable? What role does it play on the command line?
+A:
+
+Q: How can you access the shell environment in Python?
+A:
+
+Q: How do you set environment variables using a .sh file?
+A: 
+
+
+PART 5: Python Projects
+---
+
+Q: What is a Python module?
+A:
+
+Q: What is a namespace?
+A:
+
+Q: What are the 3 ways to import something in Python?
+A:
+
+Q: Why is from some_module import * not a good practice?
+A:
+
+Q: When should you import a whole library versus only one function, class, etc.?
+A:
+
+Q: What does if __name__ == "__main__" ask? When should you include this check at the bottom of your file?
+A:
+
+Q: Where are the three places that you can import things from?
+A:
+
+Q: What is pip?
+A:
+
+Q: What is a virtual environment? How is that different than a virtual machine?
+A:
+
+Q: Why are virtual environments necessary?
+A:
+
+Q: How do you create a virtual environment? How do you activate it?
+A:
+
+Q: What command can you use to view the currently installed Python libraries?
+A:
+
+Q: What should you name the file that has the list of a Python project’s dependencies?
+A: 
+
+
+PART 6: Classes
+---
+
+Q: How are classes different than dictionaries in terms of structure, flexibility, and data storage?
+A:
+
+Q: What is the relationship between a class and an instance?
+A:
+
+Q: What is instantiation?
+A:
+
+Q: What are attributes? How do you define an attribute at the class level (to be shared by all instances)? How do you set a new attribute on an instance? How can you update the value of an attribute on an instance?
+A:
+
+Q: What is a method? How do you define a method on a class? How do you call a method?
+A:
+
+Q: What are the key differences between functions and methods?
+A:
+
+Q: What is initialization? How is it different than instantiation?
+A:
+
+Q: What is __init__? When does it get called?
+A:
+
+Q: What is encapsulation? What is abstraction? What is polymorphism?
+A:
+
+Q: What is inheritance? When is it appropriate for one class to inherit attributes and/or methods from another?
+A:
+
+Q: What are the various ways in which a child class can modify methods and attributes from a parent class?
+A:
+
+Q: What is super()?
+A:
+
+Q: What’s an example of violating polymorphism? What’s an example of enforcing polymorphism?
+A:
+
+Q: When overriding parent methods, what is the only method that is normal to require different arguments than the parent method?
+A: 
+
+Q: What is an abstract class? What makes it different than a typical class?
+A:
+
+Q: When there are methods that don’t directly map to an existing hierarchy, how can you continue to pursue encapsulation? (i.e. avoid copying the same method on several classes)
+A:
