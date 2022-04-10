@@ -136,6 +136,7 @@ def get_sum_zero_pairs(numbers):
 
     return unique_pairs
 
+
 def top_chars(phrase):
     """Find most common character(s) in string.
 
@@ -161,7 +162,39 @@ def top_chars(phrase):
 
     """
 
-    return []
+    # Get the given phrase without any white spaces
+    alpha_phrase = phrase.split()
+
+    # Initialize a dictionary to store each char as a key and occurrence of the char in the string as a count
+    all_chars = {}
+
+    # Iterate through the given phrase
+    for word in alpha_phrase:
+        # Iterate through the char of each word of the phrase
+        for char in word:
+            # Initialize the char key, value pair in the dictionary if not already exist
+            if char not in all_chars:
+                all_chars[char] = 1
+            # Accumulate the value for the char key if already exist
+            else:
+                all_chars[char] += 1
+    
+    # Initialize an empty string to store the most common keys
+    most_common_keys = ""
+    current_count = 0
+
+    for key in all_chars:
+        if all_chars[key] > current_count:
+            most_common_keys = key
+            current_count = all_chars[key]
+        elif all_chars[key] == current_count:
+            most_common_keys += key
+
+    # Get the most common keys as a list
+    most_common_chars = list(most_common_keys)
+    
+    return most_common_chars
+
 
 #####################################################################
 # You can ignore everything below this.
