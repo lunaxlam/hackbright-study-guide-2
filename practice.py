@@ -42,7 +42,10 @@ def without_duplicates(words):
         <class 'list'>
     """
 
-    return []
+    # Generate a set and then convert to a list
+    no_duplicates = list(set(words))
+
+    return no_duplicates
 
 
 def find_unique_common_items(items1, items2):
@@ -78,7 +81,10 @@ def find_unique_common_items(items1, items2):
         [2]
     """
 
-    return set()
+    # Find the intersection of two sets
+    unique_common_words = set(items1) & set(items2)
+
+    return unique_common_words
 
 
 def get_sum_zero_pairs(numbers):
@@ -107,9 +113,28 @@ def get_sum_zero_pairs(numbers):
         >>> sort_pairs( get_sum_zero_pairs([1, 3, -1, 1, 1, 0]) )
         [[-1, 1], [0, 0]]
     """
+    # Initialize a list of pairs to store individual pairs that add up to 0
+    unique_pairs = []
 
-    return []
+    # Generate a list of unique numbers to evaluate
+    unique_numbers = list(set(numbers))
 
+    # Iterate through each item in unique numbers to check if == 0
+    for i, index in enumerate(unique_numbers):
+        # Set the first integer to the currently-indexed element
+        last_number = unique_numbers[i]
+
+        # Iterate through each element in the list of unique numbers to evaluate
+        for number in unique_numbers:
+            # Calculate to see if the numbers add to 0
+            if last_number + number == 0:
+                # If the numbers add to 0 then create a list of the items and sort them 
+                new_pair = sorted([last_number, number])
+                # Make sure the list of numbers do not already exist in the list of unique_pairs to return
+                if new_pair not in unique_pairs:
+                    unique_pairs.append(new_pair)
+
+    return unique_pairs
 
 def top_chars(phrase):
     """Find most common character(s) in string.
