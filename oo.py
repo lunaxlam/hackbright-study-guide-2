@@ -99,9 +99,6 @@ class StudentQuiz(Exam):
         return 0
 
 
-
-
-
 class StudentExam():
     """A student exam class."""
 
